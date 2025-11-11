@@ -1,0 +1,16 @@
+extend type Mutation {
+  createCommande(input: CreateCommandeInput!): CommandeEntityResponse!
+}
+
+input CreateCommandeInput {
+  nom_client: String!
+  email_client: String!
+  horaire_retrait: String!
+  lignes: [LigneCommandeInput!]!
+}
+
+input LigneCommandeInput {
+  produitId: ID!
+  quantite: Int!
+  options: JSON
+}

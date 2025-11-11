@@ -1,0 +1,61 @@
+{
+  "kind": "collectionType",
+  "collectionName": "commandes",
+  "info": {
+    "singularName": "commande",
+    "pluralName": "commandes",
+    "displayName": "commande"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "email_client": {
+      "type": "email"
+    },
+    "nom_client": {
+      "type": "string"
+    },
+    "horaire_retrait": {
+      "type": "time"
+    },
+    "code_retrait": {
+      "type": "uid"
+    },
+    "total": {
+      "type": "decimal"
+    },
+    "statut": {
+      "type": "enumeration",
+      "default": "en attente ",
+      "enum": [
+        "en attente ",
+        "prête ",
+        "retirée",
+        "en préparation "
+      ]
+    },
+    "ligne_de_commandes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::ligne-de-commande.ligne-de-commande"
+    },
+    "creneau_retrait": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::creneau-retrait.creneau-retrait"
+    },
+    "mode_paiement": {
+      "type": "enumeration",
+      "enum": [
+        "en_ligne",
+        "sur_place"
+      ]
+    },
+    "paiement_valide": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}
